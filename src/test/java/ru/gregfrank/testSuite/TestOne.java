@@ -1,4 +1,4 @@
-package ru.gregfrank;
+package ru.gregfrank.testSuite;
 
 import org.testng.annotations.Test;
 
