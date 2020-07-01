@@ -10,7 +10,7 @@ public class TestTwo {
 
     }
 
-    @Test
+    @Test(dependsOnMethods = "firstTestMethodTestTwo")
     public void secondTestMethodTestTwo(){
 
 
