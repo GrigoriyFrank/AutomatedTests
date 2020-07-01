@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'ru.gregfrank'
+group 'ru.gregfrank.testSuite'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -16,7 +16,10 @@ dependencies {
 test {
     useTestNG(){
 
-        suites 'src/main/resources/testNg/test.xml'
+        suites 'src/test/resources/testNG/test.xml'
+
+        //set TestNG output dir
+         outputDirectory = file("$projectDir/testngOutput")
     }
 
 }
