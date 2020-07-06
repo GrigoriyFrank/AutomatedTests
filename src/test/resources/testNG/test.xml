@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" verbose="1">
-    <test name="test">
+<suite name="testSuite" parallel="tests" thread-count="2" verbose="1" >
+    <test name="test_chrome">
+        <parameter name="browser"  value="chrome"/>
         <classes>
             <class name="ru.gregfrank.testSuite.TestOne"/>
-            <class name="ru.gregfrank.testSuite.TestTwo"/>
+
+        </classes>
+    </test>
+    <test name="test_firefox">
+        <parameter name="browser"  value="firefox"/>
+        <classes>
+            <class name="ru.gregfrank.testSuite.TestOne"/>
         </classes>
     </test>
 </suite>
