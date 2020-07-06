@@ -1,4 +1,4 @@
-package ru.gregfrank.testSuite;
+package ru.gregfrank.testAutomation.testSuite;
 
 import org.testng.annotations.Test;
 

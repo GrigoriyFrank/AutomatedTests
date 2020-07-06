@@ -1,4 +1,4 @@
-package ru.gregfrank.testSuite;
+package ru.gregfrank.testAutomation.testSuite;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
