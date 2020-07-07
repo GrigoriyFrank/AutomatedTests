@@ -20,9 +20,9 @@ public class BaseTest {
 
     }
 
-    @Parameters("browser")
+    @Parameters({"browser", "url"})
     @Test
-    public void openBrowser(String browser){
+    public void openBrowser(String browser, String url){
 
         if (browser.equalsIgnoreCase("chrome")) {
             webDriver = new ChromeDriver();
@@ -33,7 +33,7 @@ public class BaseTest {
         }
 
         webDriver.manage().window().maximize();
-        webDriver.get("https://www.google.com/");
+        webDriver.get(url);
 
     }
 }
