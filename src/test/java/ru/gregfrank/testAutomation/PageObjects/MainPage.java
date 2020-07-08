@@ -11,8 +11,6 @@ import java.util.List;
 
 public class MainPage extends BasePage {
 
-    protected static WebDriver driver;
-
     //search field
     private WebElement q;
     //search button
@@ -21,7 +19,7 @@ public class MainPage extends BasePage {
     private List<WebElement> searchResults;
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public int searchForString(String searchString) {
