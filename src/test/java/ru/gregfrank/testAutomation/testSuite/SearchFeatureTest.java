@@ -4,17 +4,17 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import ru.gregfrank.testAutomation.PageObjects.MainScreen;
+import ru.gregfrank.testAutomation.PageObjects.MainPage;
 
 public class SearchFeatureTest extends BaseTest {
 
-    MainScreen mainScreen;
+    MainPage mainPage;
 
     @Test
     public void checkSearchResults() {
 
-        mainScreen = PageFactory.initElements(webDriver, MainScreen.class);
-        Assert.assertTrue(mainScreen.searchForString("Wikipedia") > 0);
+        mainPage = PageFactory.initElements(webDriver, MainPage.class);
+        Assert.assertTrue(mainPage.searchForString("Wikipedia") > 0);
 
     }
 

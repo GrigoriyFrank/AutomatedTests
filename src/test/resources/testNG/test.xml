@@ -8,10 +8,10 @@
             <class name="ru.gregfrank.testAutomation.testSuite.SearchFeatureTest"/>
         </classes>
     </test>
-    <test name="test_firefox">
-        <parameter name="browser"  value="firefox"/>
-        <classes>
-            <class name="ru.gregfrank.testAutomation.testSuite.SearchFeatureTest"/>
-        </classes>
-    </test>
+<!--    <test name="test_firefox">-->
+<!--        <parameter name="browser"  value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="ru.gregfrank.testAutomation.testSuite.SearchFeatureTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

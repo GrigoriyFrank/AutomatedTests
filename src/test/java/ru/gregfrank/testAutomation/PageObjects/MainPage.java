@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MainScreen {
+public class MainPage {
 
     protected static WebDriver driver;
 
@@ -20,7 +20,7 @@ public class MainScreen {
     @FindBy(className = "g")
     private List<WebElement> searchResults;
 
-    public MainScreen(WebDriver driver) {
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
 

@@ -1,4 +1,4 @@
 package ru.gregfrank.testAutomation.PageObjects;
 
-public class CreateAccountScreen {
+public class CreateAccountPage {
 }
