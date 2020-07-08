@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class BaseTest {
 
-    public WebDriver webDriver;
+    protected WebDriver webDriver;
 
     @AfterClass
     public void tearDown() {
