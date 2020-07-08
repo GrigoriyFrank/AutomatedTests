@@ -1,0 +1,10 @@
+Test cases
+
+=======================================================
+Test case 1: test for search feature
+
+1) Go to www.google.com
+2) Type "Wikipedia" in serach field
+3) Click Search button
+4) Assert that there are search results in the page
+=======================================================
