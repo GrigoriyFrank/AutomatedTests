@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MainPage {
+public class MainPage extends BasePage {
 
     protected static WebDriver driver;
 
@@ -24,7 +24,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public int searchForString(String searchString){
+    public int searchForString(String searchString) {
         q.sendKeys(searchString);
         btnK.click();
         return searchResults.size();
