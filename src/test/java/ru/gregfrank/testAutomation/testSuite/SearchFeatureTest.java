@@ -13,7 +13,7 @@ public class SearchFeatureTest extends BaseTest {
     @Test
     public void checkSearchResults() {
 
-        googleSearchPage = PageFactory.initElements(webDriver, GoogleSearchPage.class);
+        googleSearchPage = new GoogleSearchPage(webDriver);
         Assert.assertTrue(googleSearchPage.searchForString("Wikipedia") > 0);
 
     }
