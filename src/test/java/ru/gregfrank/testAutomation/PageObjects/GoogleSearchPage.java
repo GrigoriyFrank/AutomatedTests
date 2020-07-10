@@ -3,10 +3,14 @@ package ru.gregfrank.testAutomation.PageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.List;
 
-public class GoogleSearchPage extends BasePage {
+public class GoogleSearchPage extends LoadableComponent<GoogleSearchPage> {
+
+    protected static WebDriver driver;
 
     @FindBy(name = "q")
     private WebElement searchField;
@@ -16,7 +20,8 @@ public class GoogleSearchPage extends BasePage {
     private List<WebElement> searchResults;
 
     public GoogleSearchPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public int searchForString(String searchString) {
@@ -26,4 +31,13 @@ public class GoogleSearchPage extends BasePage {
 
     }
 
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
 }
