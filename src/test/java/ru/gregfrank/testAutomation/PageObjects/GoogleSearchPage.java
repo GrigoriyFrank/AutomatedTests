@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MainPage extends BasePage {
+public class GoogleSearchPage extends BasePage {
 
     //search field
     private WebElement q;
@@ -18,7 +18,7 @@ public class MainPage extends BasePage {
     @FindBy(className = "g")
     private List<WebElement> searchResults;
 
-    public MainPage(WebDriver driver) {
+    public GoogleSearchPage(WebDriver driver) {
         super(driver);
     }
 
