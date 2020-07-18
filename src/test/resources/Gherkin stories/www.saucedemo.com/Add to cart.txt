@@ -22,4 +22,4 @@ When I selected the first product from product list
 And I selected the third product from product list
 And I selected the fifth product from product list
 And I opened Your Cart page
-Then I should see that selected products are in order they were selected in Product page
+Then I should see that selected products are in order they were selected on Product page
