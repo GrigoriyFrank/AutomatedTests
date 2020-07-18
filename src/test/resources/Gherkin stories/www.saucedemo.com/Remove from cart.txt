@@ -1,0 +1,5 @@
+Story: Remove selected products from shopping cart
+
+As a user
+In order to keep track of selected products
+I want to add selected products to shopping cart
