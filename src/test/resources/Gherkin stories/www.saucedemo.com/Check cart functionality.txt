@@ -2,12 +2,12 @@ Story: add/remove products from cart
 
 As a user
 In order to keep track of selected products
-I want to add selected products to shopping cart
+I want
 
 Scenario 1: The number of selected products must be visible on Products page
 Given that Products page is opened
 When I selected 3 products from product list
-Then I should see that statuses of selected products changed
+Then I should see that status of selected products changed
 And the number of selected products is on Product page
 
 Scenario 2: The selected products must be visible on Your Cart page
@@ -41,6 +41,6 @@ And I selected the fifth product from product list
 And I opened Your Cart page
 And I removed third and fifth products from product list
 And I ordered first product
-Then I should see that only first product is in order
+Then I should see that only the first product is in order
 
 Scenario 6:
