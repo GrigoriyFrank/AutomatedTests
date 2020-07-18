@@ -1,0 +1,17 @@
+Story: The selected product must be added to the shopping cart
+
+As a user
+In order to keep track of selected products
+I want to add selected products to shopping cart
+
+Scenario 1: The number of selected products must be visible on Products page
+Given that Products page is opened
+When I select 3 products from product list
+Then I should see the number of selected products on Product Page
+
+Scenario 2: The selected products must be visible on Your Cart page
+Given that Products page is opened
+When I select 3 products from product list
+And opened Your Cart page
+Then I should see that selected products are in list on Your Cart page
+
