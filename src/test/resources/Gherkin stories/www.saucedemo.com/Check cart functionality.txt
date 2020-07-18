@@ -6,7 +6,7 @@ I want
 
 Scenario 1: The number of selected products must be visible on Products page
 Given that Products page is opened
-When I selected 3 products from product list
+When I added to cart 3 products from product list
 Then I should see that status of selected products changed
 And the number of selected products is on Product page
 
@@ -43,4 +43,11 @@ And I removed third and fifth products from product list
 And I ordered first product
 Then I should see that only the first product is in order
 
-Scenario 6:
+Scenario 6: Add to cart on product preview page
+Given that Products page is opened
+When I opened preview of the first product from product list
+And I selected the first product
+And I opened Your Cart page
+Then I should see that first product is in the list on Your Cart page
+
+Scenario 7:
