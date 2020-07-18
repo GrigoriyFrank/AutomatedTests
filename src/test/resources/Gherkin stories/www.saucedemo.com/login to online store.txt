@@ -6,15 +6,17 @@ I want to check login to online store with valid, locked and invalid user
 
 Scenario 1: Login to online store with valid user
 Given that www.saucedemo.com login page is opened
-When I type standard_user in Username field
-And I type secret_sauce in Password field
-And I click LOGIN button 
+When I login with valid user
 Then I should be redirected to Products page
 
 Scenario 2: Login to online store with locked user
 Given that www.saucedemo.com login page is opened
-When I type locked_out_user in Username field
-And I type secret_sauce in Password field
-And I click LOGIN button
+When I login with locked user
 Then I should stay on Login page
-And I should see message Epic sadface: Sorry, this user has been locked out. below LOGIN button
+And I should see message Epic sadface: Sorry, this user has been locked out. on Login page
+
+Scenario 3: Login to online store with invalid user
+Given that www.saucedemo.com login page is opened
+When I login with invalid user
+Then I should stay on Login page
+And I should see message Epic sadface: Username and password do not match any user in this service on Login page
