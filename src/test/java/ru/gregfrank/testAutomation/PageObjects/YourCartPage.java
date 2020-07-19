@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.List;
 
-public class GoogleSearchPage extends LoadableComponent<GoogleSearchPage> {
+public class YourCartPage extends LoadableComponent<YourCartPage> {
 
     protected static WebDriver driver;
 
@@ -19,7 +19,7 @@ public class GoogleSearchPage extends LoadableComponent<GoogleSearchPage> {
     @FindBy(className = "g")
     private List<WebElement> searchResults;
 
-    public GoogleSearchPage(WebDriver driver) {
+    public YourCartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
