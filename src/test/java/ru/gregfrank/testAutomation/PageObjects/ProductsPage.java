@@ -32,7 +32,7 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean productsPageIsOpenned() {
+    public boolean productsPageIsOpened() {
 
         return productItems.size() > 0;
     }
