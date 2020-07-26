@@ -13,7 +13,15 @@ public class LoginTest extends BaseTest {
     public void LoginToOnlineStoreWithValidUser() {
 
         loginPage = new LoginPage(webDriver);
-        Assert.assertTrue(loginPage.loginUser("standard_user", "secret_sauce").productsPageIsOpened());
+        Assert.assertTrue(loginPage.loginValidUser("standard_user", "secret_sauce").productsPageIsOpened());
+
+    }
+
+    @Test
+    public void LoginToOnlineStoreWithLockedUser() {
+
+        loginPage = new LoginPage(webDriver);
+        Assert.assertTrue(loginPage.loginLockedUser("locked_out_user", "secret_sauce").isErrorMessageDisplayed());
 
     }
 
