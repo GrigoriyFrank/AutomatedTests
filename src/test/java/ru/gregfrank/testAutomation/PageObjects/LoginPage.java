@@ -44,9 +44,9 @@ public class LoginPage extends LoadableComponent<LoginPage> {
 
     }
 
-    public boolean isErrorMessageDisplayed(){
+    public String getErrorMessageText(){
 
-        return errorMessage.isDisplayed();
+        return  errorMessage.getText();
     }
 
     @Override

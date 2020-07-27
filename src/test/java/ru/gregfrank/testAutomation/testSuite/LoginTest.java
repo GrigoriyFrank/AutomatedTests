@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
     public void LoginToOnlineStoreWithLockedUser() {
 
         loginPage = new LoginPage(webDriver);
-        Assert.assertTrue(loginPage.loginLockedUser("locked_out_user", "secret_sauce").isErrorMessageDisplayed());
+        Assert.assertEquals(loginPage.loginLockedUser("locked_out_user", "secret_sauce").getErrorMessageText(), "Epic sadface: Sorry, this user has been locked out.");
 
     }
 

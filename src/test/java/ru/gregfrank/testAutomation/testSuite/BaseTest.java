@@ -11,8 +11,6 @@ public class BaseTest {
 
     protected WebDriver webDriver;
 
-    //TODO: add openBrowser' test logic to @BeforeClass (check if it possible to send parameters)
-
     @AfterClass
     public void tearDown() {
 
