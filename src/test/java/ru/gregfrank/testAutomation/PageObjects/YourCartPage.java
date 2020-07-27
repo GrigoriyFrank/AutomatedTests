@@ -7,28 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 
 import java.util.List;
-
+//TODO implement Scenario 2: The selected products must be visible on Your Cart page
 public class YourCartPage extends LoadableComponent<YourCartPage> {
 
     protected static WebDriver driver;
 
-    @FindBy(name = "q")
-    private WebElement searchField;
-    @FindBy(name = "btnK")
-    private WebElement searchButton;
-    @FindBy(className = "g")
-    private List<WebElement> searchResults;
-
     public YourCartPage(WebDriver driver) {
         this.driver = driver;
+        this.get();
         PageFactory.initElements(driver, this);
-    }
-
-    public int searchForString(String searchString) {
-        searchField.sendKeys(searchString);
-        searchButton.click();
-        return searchResults.size();
-
     }
 
     @Override

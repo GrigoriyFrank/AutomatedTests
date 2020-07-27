@@ -31,4 +31,10 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(productsPage.isProductAddedToCart(1));
         Assert.assertTrue(productsPage.isNumberOfAddedProductsVisible(1));
     }
+
+    @Test
+    public void theSelectedProductsMustBeVisibleOnYourCartPage(){
+
+        productsPage.addProductToCart(1);
+    }
 }
