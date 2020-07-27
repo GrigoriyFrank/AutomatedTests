@@ -5,7 +5,8 @@
     <test name="test_chrome">
         <parameter name="browser"  value="chrome"/>
         <classes>
-            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>
+<!--            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>-->
+            <class name="ru.gregfrank.testAutomation.testSuite.CartTest"/>
         </classes>
     </test>
 <!--    <test name="test_firefox">-->

@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import ru.gregfrank.testAutomation.PageObjects.LoginPage;
 
+//TODO: extend loadableComponent
 public class LoginTest extends BaseTest {
 
     LoginPage loginPage;

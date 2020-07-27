@@ -24,6 +24,8 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     @FindBy(css = ".inventory_item")
     List<WebElement> productItems;
 
+
+
     WebDriver driver;
 
     public ProductsPage(WebDriver driver) {
@@ -35,6 +37,29 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     public boolean productsPageIsOpened() {
 
         return productItems.size() > 0;
+    }
+
+    public ProductsPage addProductToCart(int numberOfProduct){
+
+        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_primary",numberOfProduct))).click();
+        return this;
+    }
+
+    public ProductsPage removeProduct(int numberOfProduct){
+
+        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary",numberOfProduct))).click();
+        return this;
+    }
+
+    public boolean isProductAddedToCart(int numberOfProduct){
+
+        return driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary",numberOfProduct))).isDisplayed();
+    }
+
+    public boolean isNumberOfAddedProductsVisible(int count){
+
+        return driver.findElement(By.cssSelector(".shopping_cart_badge")).getText().equals(Integer.toString(count));
+
     }
 
 
