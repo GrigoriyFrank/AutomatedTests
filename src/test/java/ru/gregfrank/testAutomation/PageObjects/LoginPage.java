@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-public class LoginPage extends LoadableComponent<LoginPage> {
+public class LoginPage {
     @FindBy(css = "input[data-test=username]")
     WebElement userName;
     @FindBy(css = "input[data-test=password]")
@@ -21,7 +21,6 @@ public class LoginPage extends LoadableComponent<LoginPage> {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        this.get();
         PageFactory.initElements(driver, this);
     }
 
@@ -49,13 +48,4 @@ public class LoginPage extends LoadableComponent<LoginPage> {
         return  errorMessage.getText();
     }
 
-    @Override
-    protected void load() {
-
-    }
-
-    @Override
-    protected void isLoaded() throws Error {
-
-    }
 }
