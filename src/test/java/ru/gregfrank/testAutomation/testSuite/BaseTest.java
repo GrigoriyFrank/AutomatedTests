@@ -3,25 +3,14 @@ package ru.gregfrank.testAutomation.testSuite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class BaseTest {
 
     protected WebDriver webDriver;
 
-    @AfterClass
-    public void tearDown() {
-
-        if (webDriver != null) {
-            webDriver.quit();
-        }
-
-    }
-
     @Parameters({"browser", "url"})
-    @Test
+    @BeforeMethod
     public void openBrowser(String browser, String url){
 
         if (browser.equalsIgnoreCase("chrome")) {
@@ -34,6 +23,15 @@ public class BaseTest {
 
         webDriver.manage().window().maximize();
         webDriver.get(url);
+
+    }
+
+    @AfterMethod
+    public void tearDown() {
+
+        if (webDriver != null) {
+            webDriver.quit();
+        }
 
     }
 }
