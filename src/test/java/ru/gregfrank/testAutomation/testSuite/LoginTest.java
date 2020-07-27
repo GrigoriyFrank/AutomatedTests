@@ -25,4 +25,13 @@ public class LoginTest extends BaseTest {
 
     }
 
+
+    @Test
+    public void LoginToOnlineStoreWithInvalidUser() {
+
+        loginPage = new LoginPage(webDriver);
+        Assert.assertEquals(loginPage.loginLockedUser("invalid_user", "secret_sauce").getErrorMessageText(), "Epic sadface: Username and password do not match any user in this service");
+
+    }
+
 }
