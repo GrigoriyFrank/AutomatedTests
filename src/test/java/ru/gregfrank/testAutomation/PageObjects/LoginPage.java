@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-//TODO: extend loadableComponent
-public class LoginPage {
+public class LoginPage extends LoadableComponent<LoginPage>{
     @FindBy(css = "input[data-test=username]")
     WebElement userName;
     @FindBy(css = "input[data-test=password]")
@@ -49,4 +48,13 @@ public class LoginPage {
         return  errorMessage.getText();
     }
 
+    @Override
+    protected void load() {
+
+    }
+
+    @Override
+    protected void isLoaded() throws Error {
+
+    }
 }
