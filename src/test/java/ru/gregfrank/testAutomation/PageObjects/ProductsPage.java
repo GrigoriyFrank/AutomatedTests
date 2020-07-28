@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import ru.gregfrank.testAutomation.Helpers;
 
 import java.time.Duration;
 import java.util.List;
@@ -23,7 +24,6 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     WebElement productList;
     @FindBy(css = ".inventory_item")
     List<WebElement> productItems;
-
 
 
     WebDriver driver;
@@ -39,30 +39,30 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
         return productItems.size() > 0;
     }
 
-    public ProductsPage addProductToCart(int numberOfProduct){
+    public ProductsPage addProductToCart(int numberOfProduct) {
 
-        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_primary",numberOfProduct))).click();
+        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_primary", numberOfProduct))).click();
         return this;
     }
 
-    public ProductsPage removeProduct(int numberOfProduct){
+    public ProductsPage removeProduct(int numberOfProduct) {
 
-        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary",numberOfProduct))).click();
+        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary", numberOfProduct))).click();
         return this;
     }
 
-    public boolean isProductAddedToCart(int numberOfProduct){
+    public boolean isProductAddedToCart(int numberOfProduct) {
 
-        return driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary",numberOfProduct))).isDisplayed();
+        return driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary", numberOfProduct))).isDisplayed();
     }
 
-    public boolean isNumberOfAddedProductsVisible(int count){
+    public boolean isNumberOfAddedProductsVisible(int count) {
 
         return driver.findElement(By.cssSelector(".shopping_cart_badge")).getText().equals(Integer.toString(count));
 
     }
 
-    public YourCartPage openCart(){
+    public YourCartPage openCart() {
 
         driver.findElement((By.cssSelector(".shopping_cart_link"))).click();
         return new YourCartPage(driver);
@@ -73,15 +73,14 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     protected void load() {
 
         System.out.println("load()");
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5).getSeconds());
-        wait.until(visibilityOfElementLocated(By.cssSelector(".inventory_list")));
+        Helpers.waitForElementVisibility(driver, By.cssSelector(".inventory_list"));
     }
 
     @Override
     protected void isLoaded() throws Error {
 
         System.out.println("isLoaded()");
-        Assert.assertTrue(driver.findElement(By.cssSelector(".inventory_list")).isDisplayed(), "Product page is not yet loaded.");
+        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".inventory_list")), "Product page is not yet loaded.");
 
     }
 }
