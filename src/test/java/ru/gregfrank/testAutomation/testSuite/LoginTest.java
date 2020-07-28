@@ -5,33 +5,25 @@ import org.testng.annotations.Test;
 
 import ru.gregfrank.testAutomation.PageObjects.LoginPage;
 
-//TODO: extend loadableComponent
+import java.util.Arrays;
+
 public class LoginTest extends BaseTest {
 
     LoginPage loginPage;
 
-    @Test
-    public void LoginToOnlineStoreWithValidUser() {
+    @Test(dataProvider = "getValidUserData", dataProviderClass = TestDataProvider.class)
+    public void LoginToOnlineStoreWithValidUser(String userName, String password) {
 
         loginPage = new LoginPage(webDriver);
-        loginPage.loginValidUser("standard_user", "secret_sauce");
+        loginPage.loginValidUser(userName, password);
 
     }
 
-    @Test
-    public void LoginToOnlineStoreWithLockedUser() {
+    @Test(dataProvider = "getInvalidUserData", dataProviderClass = TestDataProvider.class)
+    public void LoginToOnlineStoreWithLockedOrInvalidUser(String userName, String password, String errorMessage) {
 
         loginPage = new LoginPage(webDriver);
-        Assert.assertEquals(loginPage.loginLockedUser("locked_out_user", "secret_sauce").getErrorMessageText(), "Epic sadface: Sorry, this user has been locked out.");
-
-    }
-
-
-    @Test
-    public void LoginToOnlineStoreWithInvalidUser() {
-
-        loginPage = new LoginPage(webDriver);
-        Assert.assertEquals(loginPage.loginLockedUser("invalid_user", "secret_sauce").getErrorMessageText(), "Epic sadface: Username and password do not match any user in this service");
+        Assert.assertEquals(loginPage.loginLockedUser(userName, password).getErrorMessageText(), errorMessage);
 
     }
 

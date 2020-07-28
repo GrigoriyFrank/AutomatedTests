@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
+//TODO: extend loadableComponent
 public class LoginPage {
     @FindBy(css = "input[data-test=username]")
     WebElement userName;
