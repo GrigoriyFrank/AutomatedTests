@@ -1,11 +1,13 @@
 package ru.gregfrank.testAutomation.PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
+import ru.gregfrank.testAutomation.Helpers;
 
 public class LoginPage extends LoadableComponent<LoginPage>{
     @FindBy(css = "input[data-test=username]")
@@ -50,11 +52,11 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     @Override
     protected void load() {
-
+        Helpers.waitForElementVisibility(driver, By.id("login-button"));
     }
 
     @Override
     protected void isLoaded() throws Error {
-
+        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.id("login-button")), "Login page is not yet loaded.");
     }
 }
