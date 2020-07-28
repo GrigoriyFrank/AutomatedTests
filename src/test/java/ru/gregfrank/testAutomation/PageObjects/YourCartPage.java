@@ -18,7 +18,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class YourCartPage extends LoadableComponent<YourCartPage> {
 
-    protected static WebDriver driver;
+    WebDriver driver;
 
     public YourCartPage(WebDriver driver) {
         this.driver = driver;
