@@ -81,7 +81,7 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     protected void isLoaded() throws Error {
 
         System.out.println("isLoaded()");
-        Assert.assertTrue(driver.findElement(By.cssSelector(".inventory_list")).isDisplayed(), "Product list is not yet loaded.");
+        Assert.assertTrue(driver.findElement(By.cssSelector(".inventory_list")).isDisplayed(), "Product page is not yet loaded.");
 
     }
 }
