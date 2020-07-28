@@ -72,14 +72,12 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     @Override
     protected void load() {
 
-        System.out.println("load()");
         Helpers.waitForElementVisibility(driver, By.cssSelector(".inventory_list"));
     }
 
     @Override
     protected void isLoaded() throws Error {
 
-        System.out.println("isLoaded()");
         Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".inventory_list")), "Product page is not yet loaded.");
 
     }
