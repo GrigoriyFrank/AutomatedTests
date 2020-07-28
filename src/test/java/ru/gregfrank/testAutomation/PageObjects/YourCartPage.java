@@ -29,6 +29,11 @@ public class YourCartPage extends LoadableComponent<YourCartPage> {
         return driver.findElements(By.cssSelector(".cart_item")).size() == number;
     }
 
+    public String getNameOfProduct(int numberOfProduct){
+
+        return driver.findElement(By.cssSelector(String.format(".cart_item:nth-child(%d) .inventory_item_name", numberOfProduct))).getText();
+    }
+
     @Override
     protected void load() {
 
