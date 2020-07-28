@@ -23,6 +23,7 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        this.get();
         PageFactory.initElements(driver, this);
     }
 
