@@ -73,7 +73,7 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     protected void load() {
 
         System.out.println("load()");
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(30).getSeconds());
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5).getSeconds());
         wait.until(visibilityOfElementLocated(By.cssSelector(".inventory_list")));
     }
 
