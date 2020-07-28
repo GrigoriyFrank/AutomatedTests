@@ -2,6 +2,8 @@ package ru.gregfrank.testAutomation.testSuite;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.gregfrank.testAutomation.PageObjects.LoginPage;
 import ru.gregfrank.testAutomation.PageObjects.ProductsPage;
@@ -12,7 +14,7 @@ public class CartTest extends BaseTest {
     ProductsPage productsPage;
 
     @BeforeMethod(dependsOnMethods = "openBrowser", alwaysRun = true)
-    public void loginToSite(){
+    public void loginToSite() {
 
         loginPage = new LoginPage(webDriver);
         productsPage = loginPage.loginValidUser("standard_user", "secret_sauce");
@@ -26,15 +28,22 @@ public class CartTest extends BaseTest {
 //    And the number of selected products is on Product page
 
     @Test
-    public void theNumberOfSelectedProductsMustBeVisibleOnProductsPage(){
+    public void theNumberOfSelectedProductsMustBeVisibleOnProductsPage() {
         productsPage.addProductToCart(1);
         Assert.assertTrue(productsPage.isProductAddedToCart(1));
         Assert.assertTrue(productsPage.isNumberOfAddedProductsVisible(1));
     }
 
+    @Parameters("numberOfProducts")
     @Test
-    public void theSelectedProductsMustBeVisibleOnYourCartPage(){
+    public void theSelectedProductsMustBeVisibleOnYourCartPage(@Optional("3") int numberOfProducts) {
 
-        productsPage.addProductToCart(1);
+        for (int i = 1; i <= numberOfProducts; i++) {
+            productsPage.addProductToCart(i);
+
+        }
+
+        Assert.assertTrue(productsPage.openCart().checkNumberOfItemsInYourCartList(numberOfProducts));
+
     }
 }
