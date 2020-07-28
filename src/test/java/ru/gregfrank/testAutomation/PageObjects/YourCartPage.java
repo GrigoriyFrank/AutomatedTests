@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import ru.gregfrank.testAutomation.Helpers;
 
 import java.time.Duration;
 import java.util.List;
@@ -37,15 +38,14 @@ public class YourCartPage extends LoadableComponent<YourCartPage> {
     @Override
     protected void load() {
 
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5).getSeconds());
-        wait.until(visibilityOfElementLocated(By.cssSelector(".checkout_button")));
+        Helpers.waitForElementVisibility(driver, By.cssSelector(".checkout_button"));
 
     }
 
     @Override
     protected void isLoaded() throws Error {
 
-        Assert.assertTrue(driver.findElement(By.cssSelector(".checkout_button")).isDisplayed(), "Your Cart page is not yet loaded.");
+        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".checkout_button")), "Your Cart page is not yet loaded.");
 
     }
 }
