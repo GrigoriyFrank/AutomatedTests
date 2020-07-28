@@ -23,15 +23,16 @@ public class CartTest extends BaseTest {
 
     }
 
-//    When I added to cart 3 products from product list
-//    Then I should see that status of selected products changed
-//    And the number of selected products is on Product page
-
+    @Parameters("numberOfProducts")
     @Test
-    public void theNumberOfSelectedProductsMustBeVisibleOnProductsPage() {
-        productsPage.addProductToCart(1);
-        Assert.assertTrue(productsPage.isProductAddedToCart(1));
-        Assert.assertTrue(productsPage.isNumberOfAddedProductsVisible(1));
+    public void theNumberOfSelectedProductsMustBeVisibleOnProductsPage(@Optional("3") int numberOfProducts) {
+        for (int i = 1; i <= numberOfProducts; i++) {
+            productsPage.addProductToCart(i);
+            Assert.assertTrue(productsPage.isProductAddedToCart(i));
+
+        }
+
+        Assert.assertTrue(productsPage.isNumberOfAddedProductsVisible(numberOfProducts));
     }
 
     @Parameters("numberOfProducts")
@@ -46,4 +47,6 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(productsPage.openCart().checkNumberOfItemsInYourCartList(numberOfProducts));
 
     }
+
+
 }
