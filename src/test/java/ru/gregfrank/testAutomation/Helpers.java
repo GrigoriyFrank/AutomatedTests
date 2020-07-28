@@ -20,7 +20,7 @@ public class Helpers {
         wait.until(visibilityOfElementLocated(locator));
     }
 
-    public static boolean isElementDisplayed(WebDriver driver, By locator){
+    public static boolean isWebElementDisplayed(WebDriver driver, By locator){
 
         return driver.findElement(locator).isDisplayed();
 
