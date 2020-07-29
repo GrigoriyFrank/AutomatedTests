@@ -45,7 +45,7 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
         return this;
     }
 
-    public ProductsPage removeProduct(int numberOfProduct) {
+    public ProductsPage removeProductFromCart(int numberOfProduct) {
 
         driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary", numberOfProduct))).click();
         return this;

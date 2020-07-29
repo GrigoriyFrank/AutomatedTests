@@ -31,4 +31,13 @@ public class TestDataProvider {
                 {Arrays.asList(1,4,5), Arrays.asList("Sauce Labs Backpack","Sauce Labs Fleece Jacket","Sauce Labs Onesie")},
         };
     }
+
+    @DataProvider(name = "getProductsDataToCheckRemove")
+    public static Object[][] getProductsDataToCheckRemove() {
+        return new Object[][]{
+                {Arrays.asList(1,3,5), Arrays.asList("Sauce Labs Backpack","Sauce Labs Onesie")},
+                {Arrays.asList(2,4,6), Arrays.asList("Sauce Labs Bike Light","Test.allTheThings() T-Shirt (Red)")},
+                {Arrays.asList(1,4,5), Arrays.asList("Sauce Labs Backpack","Sauce Labs Onesie")},
+        };
+    }
 }

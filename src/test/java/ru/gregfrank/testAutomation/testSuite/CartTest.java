@@ -50,19 +50,38 @@ public class CartTest extends BaseTest {
     }
 
     @Test(dataProvider = "getProductsData", dataProviderClass = TestDataProvider.class)
-    public void theOrderOfProductsOnYourCartPageMustBeTheSameAsTheyWereSelectedOnProductPage(List<Integer> numbersOfProduct, List<String> namesOfProduct){
+    public void theOrderOfProductsOnYourCartPageMustBeTheSameAsTheyWereSelectedOnProductPage(List<Integer> numbersOfProduct, List<String> namesOfProduct) {
 
-        for(Integer number: numbersOfProduct){
+        for (Integer number : numbersOfProduct) {
 
             productsPage.addProductToCart(number);
         }
 
-       YourCartPage yourCartPage = productsPage.openCart();
+        YourCartPage yourCartPage = productsPage.openCart();
 
-        for(Integer number: numbersOfProduct){
+        for (Integer number : numbersOfProduct) {
 
             Assert.assertEquals(yourCartPage.getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3), namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
         }
+
+    }
+
+
+    @Test(dataProvider = "getProductsDataToCheckRemove", dataProviderClass = TestDataProvider.class)
+    public void removeProductFromCartOnProductPage(List<Integer> numbersOfProduct, List<String> namesOfProduct) {
+
+        int indexOfProductToRemove = 1;
+        for (Integer number : numbersOfProduct) {
+
+            productsPage.addProductToCart(number);
+        }
+
+        productsPage.removeProductFromCart(numbersOfProduct.get(indexOfProductToRemove));
+
+        for (String name : namesOfProduct) {
+            Assert.assertEquals(productsPage.openCart().getNameOfProduct(namesOfProduct.lastIndexOf(name) + 3), name, "Removed product is on Your Cart page");
+        }
+
 
     }
 
