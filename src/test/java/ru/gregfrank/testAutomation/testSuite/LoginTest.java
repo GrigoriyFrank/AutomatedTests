@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 
 import ru.gregfrank.testAutomation.PageObjects.LoginPage;
 
-import java.util.Arrays;
-
 public class LoginTest extends BaseTest {
 
     LoginPage loginPage;

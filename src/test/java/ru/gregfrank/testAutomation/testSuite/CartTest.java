@@ -4,9 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.gregfrank.testAutomation.PageObjects.LoginPage;
 import ru.gregfrank.testAutomation.PageObjects.ProductsPage;
-import ru.gregfrank.testAutomation.PageObjects.YourCartPage;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CartTest extends BaseTest {
