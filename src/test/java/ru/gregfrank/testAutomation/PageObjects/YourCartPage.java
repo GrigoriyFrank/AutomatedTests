@@ -30,6 +30,18 @@ public class YourCartPage extends LoadableComponent<YourCartPage> {
         return driver.findElements(By.cssSelector(".cart_item")).size() == number;
     }
 
+    public YourCartPage removeProduct(int numberOfProduct){
+
+        driver.findElement(By.cssSelector(String.format(".cart_item:nth-child(%d) .cart_button", numberOfProduct))).click();
+        return this;
+    }
+
+    public CheckoutYourInformationPage checkout(){
+
+        driver.findElement(By.cssSelector(".checkout_button")).click();
+        return new CheckoutYourInformationPage(driver);
+    }
+
     public String getNameOfProduct(int numberOfProduct){
 
         return driver.findElement(By.cssSelector(String.format(".cart_item:nth-child(%d) .inventory_item_name", numberOfProduct))).getText();

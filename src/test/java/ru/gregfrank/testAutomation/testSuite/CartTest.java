@@ -82,4 +82,24 @@ public class CartTest extends BaseTest {
 
     }
 
+    @Test(dataProvider = "getProductsDataToCheckRemove", dataProviderClass = TestDataProvider.class)
+    public void removeProductFromCartOnYourCartPage(List<Integer> numbersOfProduct, List<String> namesOfProduct) {
+
+        int indexOfProductToRemove = 1;
+        for (Integer number : numbersOfProduct) {
+
+            productsPage.addProductToCart(number);
+        }
+
+        Assert.assertTrue(
+                productsPage
+                        .openCart()
+                        .removeProduct(indexOfProductToRemove + 3)
+                        .checkout()
+                        .addPersonalInfo()
+                        .checkNumberOfProductsInOrder(namesOfProduct.size()),
+                "The number of products is wrong");
+
+    }
+
 }
