@@ -49,7 +49,7 @@ public class CartTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "getProductsData")
+    @Test(dataProvider = "getProductsData", dataProviderClass = TestDataProvider.class)
     public void theOrderOfProductsOnYourCartPageMustBeTheSameAsTheyWereSelectedOnProductPage(List<Integer> numbersOfProduct, List<String> namesOfProduct){
 
         for(Integer number: numbersOfProduct){
@@ -64,15 +64,6 @@ public class CartTest extends BaseTest {
             Assert.assertEquals(yourCartPage.getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3), namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
         }
 
-    }
-
-    @DataProvider(name = "getProductsData")
-    public static Object[][] getProductsData() {
-        return new Object[][]{
-                {Arrays.asList(1,3,5), Arrays.asList("Sauce Labs Backpack","Sauce Labs Bolt T-Shirt","Sauce Labs Onesie")},
-                {Arrays.asList(2,4,6), Arrays.asList("Sauce Labs Bike Light","Sauce Labs Fleece Jacket","Test.allTheThings() T-Shirt (Red)")},
-                {Arrays.asList(1,4,5), Arrays.asList("Sauce Labs Backpack","Sauce Labs Fleece Jacket","Sauce Labs Onesie")},
-        };
     }
 
 }
