@@ -57,15 +57,12 @@ public class CartTest extends BaseTest {
             productsPage.addProductToCart(number);
         }
 
-        YourCartPage yourCartPage = productsPage.openCart();
-
         for (Integer number : numbersOfProduct) {
 
-            Assert.assertEquals(yourCartPage.getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3), namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
+            Assert.assertEquals(productsPage.openCart().getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3), namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
         }
 
     }
-
 
     @Test(dataProvider = "getProductsDataToCheckRemove", dataProviderClass = TestDataProvider.class)
     public void removeProductFromCartOnProductPage(List<Integer> numbersOfProduct, List<String> namesOfProduct) {
