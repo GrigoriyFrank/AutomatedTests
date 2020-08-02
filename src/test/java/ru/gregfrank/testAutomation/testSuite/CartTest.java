@@ -17,8 +17,6 @@ public class CartTest extends BaseTest {
 
         loginPage = new LoginPage(webDriver);
         productsPage = loginPage.loginValidUser("standard_user", "secret_sauce");
-        //TODO: maybe .productsPageIsOpened() is not needed as we have checks for load in Products page class
-        Assert.assertTrue(productsPage.productsPageIsOpened());
 
     }
 
