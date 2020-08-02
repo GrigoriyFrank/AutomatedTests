@@ -4,10 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
+import ru.gregfrank.testAutomation.TestListener;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
-    protected WebDriver webDriver;
+    WebDriver webDriver;
 
     @Parameters({"browser", "url"})
     @BeforeMethod
@@ -33,5 +35,9 @@ public class BaseTest {
             webDriver.quit();
         }
 
+    }
+
+    public WebDriver getWebDriver() {
+        return webDriver;
     }
 }
