@@ -1,0 +1,16 @@
+Story: product preview feature on Products page
+
+As a user
+In order show product preview correctly
+I want to check product preview feature
+
+
+Scenario 1: Open preview by clicking on product title
+Given that Products page is opened
+When I clicked product title
+Then I should see preview of that product
+
+Scenario 2: Open preview by clicking on product thumbnail
+Given that Products page is opened
+When I clicked product thumbnail
+Then I should see preview of that product
