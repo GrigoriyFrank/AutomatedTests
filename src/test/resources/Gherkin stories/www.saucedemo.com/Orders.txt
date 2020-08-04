@@ -16,7 +16,7 @@ And I opened Checkout: Overview page
 And I opened Finish page
 Then I should see that the order has been dispatched
 
-Scenario 2: Continue Shopping 1
+Scenario 2: Continue Shopping
 Given that Products page is opened
 When I selected the first product from product list
 And I selected the third product from product list
@@ -25,11 +25,20 @@ And I opened Your Cart page
 And I deleted first product from cart
 And I continue shopping
 Then I should see that first product is not in the cart
+And I should see that the third product is in the cart
+And I should see that the fifth product is in the cart
 
-Scenario 3: Continue Shopping 2
+Scenario 3: Cancel the order
 Given that Products page is opened
 When I selected the first product from product list
 And I selected the third product from product list
 And I selected the fifth product from product list
 And I opened Your Cart page
-...
+And I opened Checkout: Your Information page
+And I entered user personal data
+And I opened Checkout: Overview page
+And I canceled the order
+Then I should see that Products page is opened
+And I should see that the first product is in the cart
+And I should see that the third product is in the cart
+And I should see that the fifth product is in the cart
