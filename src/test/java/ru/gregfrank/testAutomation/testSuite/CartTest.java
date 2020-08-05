@@ -41,7 +41,10 @@ public class CartTest extends BaseTest {
 
         }
 
-        Assert.assertTrue(productsPage.openCart().checkNumberOfItemsInYourCartList(numberOfProducts));
+        Assert.assertTrue(
+                productsPage
+                        .openCart()
+                        .checkNumberOfItemsInYourCartList(numberOfProducts));
 
     }
 
@@ -55,7 +58,11 @@ public class CartTest extends BaseTest {
 
         for (Integer number : numbersOfProduct) {
 
-            Assert.assertEquals(productsPage.openCart().getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3), namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
+            Assert.assertEquals(
+                    productsPage
+                            .openCart()
+                            .getNameOfProduct(numbersOfProduct.lastIndexOf(number) + 3),
+                    namesOfProduct.get(numbersOfProduct.lastIndexOf(number)), "The order of products is incorrect on Your Cart page");
         }
 
     }
@@ -72,7 +79,11 @@ public class CartTest extends BaseTest {
         productsPage.removeProductFromCart(numbersOfProduct.get(indexOfProductToRemove));
 
         for (String name : namesOfProduct) {
-            Assert.assertEquals(productsPage.openCart().getNameOfProduct(namesOfProduct.lastIndexOf(name) + 3), name, "Removed product is on Your Cart page");
+            Assert.assertEquals(
+                    productsPage
+                            .openCart()
+                            .getNameOfProduct(namesOfProduct.lastIndexOf(name) + 3),
+                    name, "Removed product is on Your Cart page");
         }
 
 
