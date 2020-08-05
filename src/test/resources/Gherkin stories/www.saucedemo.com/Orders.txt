@@ -1,8 +1,8 @@
 Story: Orders/Continue shopping
 
 As a user
-In order
-I want
+In order user can order products
+I want to check ordering of products
 
 Scenario 1: Dispatch the order
 Given that Products page is opened

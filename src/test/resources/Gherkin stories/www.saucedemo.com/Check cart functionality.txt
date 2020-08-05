@@ -2,7 +2,7 @@ Story: add/remove products from cart
 
 As a user
 In order to keep track of selected products
-I want
+I want to check cart functionality
 
 Scenario 1: The number of selected products must be visible on Products page
 Given that Products page is opened
