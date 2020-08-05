@@ -109,4 +109,16 @@ public class CartTest extends BaseTest {
 
     }
 
+    @Test
+    public void addProductToCartOnProductPreviewPage() {
+        Assert.assertTrue(
+                productsPage
+                        .openFirstProductPreview()
+                        .addProductToCart()
+                        .openCart()
+                        .checkNumberOfItemsInYourCartList(1),
+                "The number of products is wrong");
+
+    }
+
 }

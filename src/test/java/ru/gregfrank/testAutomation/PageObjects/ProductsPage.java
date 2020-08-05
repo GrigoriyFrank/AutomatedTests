@@ -56,10 +56,14 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
     }
 
     public YourCartPage openCart() {
-
         driver.findElement((By.cssSelector(".shopping_cart_link"))).click();
         return new YourCartPage(driver);
     }
+
+    public ProductPreviewPage openFirstProductPreview(){
+        driver.findElement(By.id("item_4_title_link")).click();
+        return new ProductPreviewPage(driver);
+        }
 
 
     @Override
