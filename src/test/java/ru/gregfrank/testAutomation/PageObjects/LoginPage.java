@@ -58,6 +58,7 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     @Override
     protected void isLoaded() throws Error {
+        //TODO: Assertion is not reached if element is not find on the page. So it is not clear (no error) that page is not loaded
         Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.id("login-button")), "Login page is not yet loaded.");
     }
 }
