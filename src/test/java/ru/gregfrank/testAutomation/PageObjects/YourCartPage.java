@@ -6,13 +6,19 @@ import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
 
-public class YourCartPage extends LoadableComponent<YourCartPage> {
+public class YourCartPage extends BaseObjectPage<YourCartPage> {
 
     WebDriver driver;
 
     public YourCartPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         this.get();
+    }
+
+    @Override
+    public String getPageUrl() {
+        return "/";
     }
 
     public boolean checkNumberOfItemsInYourCartList(int number){
