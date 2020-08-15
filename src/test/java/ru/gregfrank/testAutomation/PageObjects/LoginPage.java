@@ -1,13 +1,8 @@
 package ru.gregfrank.testAutomation.PageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.testng.Assert;
-import ru.gregfrank.testAutomation.Helpers;
 
 public class LoginPage extends LoadableComponent<LoginPage>{
     @FindBy(css = "input[data-test=username]")
@@ -28,27 +23,27 @@ public class LoginPage extends LoadableComponent<LoginPage>{
     }
 
 
-    public ProductsPage loginValidUser(String userName, String password){
+    public ProductsPage loginValidUser(String userName, String password) {
 
-        this.userName.sendKeys(userName);
-        this.password.sendKeys(password);
-        loginButton.click();
+        type(this.userName, userName);
+        type(this.password, password);
+        click(loginButton);
         return new ProductsPage(driver);
 
     }
 
-    public LoginPage loginLockedUser(String userName, String password){
+    public LoginPage loginLockedUser(String userName, String password) {
 
-        this.userName.sendKeys(userName);
-        this.password.sendKeys(password);
-        loginButton.click();
+        type(this.userName, userName);
+        type(this.password, password);
+        click(loginButton);
         return this;
 
     }
 
-    public String getErrorMessageText(){
+    public String getErrorMessageText() {
 
-        return  errorMessage.getText();
+        return getText(errorMessage);
     }
 
     @Override

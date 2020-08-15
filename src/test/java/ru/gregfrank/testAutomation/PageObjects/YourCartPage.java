@@ -16,11 +16,6 @@ public class YourCartPage extends BaseObjectPage<YourCartPage> {
         this.get();
     }
 
-    @Override
-    public String getPageUrl() {
-        return "/";
-    }
-
     public boolean checkNumberOfItemsInYourCartList(int number){
 
         return driver.findElements(By.cssSelector(".cart_item")).size() == number;
