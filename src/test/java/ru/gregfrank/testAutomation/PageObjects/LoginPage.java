@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends LoadableComponent<LoginPage>{
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+
+public class LoginPage extends BaseObjectPage<LoginPage>{
+    private static final String BASE_URL = "https://www.saucedemo.com";
     @FindBy(css = "input[data-test=username]")
     WebElement userName;
     @FindBy(css = "input[data-test=password]")
@@ -18,6 +21,7 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     public LoginPage() {
         super(getDriver());
+        this.openPage(LoginPage.class);
     }
 
 
