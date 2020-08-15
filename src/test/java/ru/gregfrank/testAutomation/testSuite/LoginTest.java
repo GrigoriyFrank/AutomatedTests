@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
     @Test(dataProvider = "getValidUserData", dataProviderClass = TestDataProvider.class)
     public void LoginToOnlineStoreWithValidUser(String userName, String password) {
 
-        loginPage = new LoginPage(webDriver);
+        loginPage = new LoginPage();
         loginPage.loginValidUser(userName, password);
 
     }
@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
     @Test(dataProvider = "getInvalidUserData", dataProviderClass = TestDataProvider.class)
     public void LoginToOnlineStoreWithLockedOrInvalidUser(String userName, String password, String errorMessage) {
 
-        loginPage = new LoginPage(webDriver);
+        loginPage = new LoginPage();
         Assert.assertEquals(loginPage.loginLockedUser(userName, password).getErrorMessageText(), errorMessage);
 
     }
