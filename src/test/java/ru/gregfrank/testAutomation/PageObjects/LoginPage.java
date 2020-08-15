@@ -16,10 +16,8 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     WebDriver driver;
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        this.get();
-        PageFactory.initElements(driver, this);
+    public LoginPage() {
+        super(getDriver());
     }
 
 
@@ -28,7 +26,7 @@ public class LoginPage extends LoadableComponent<LoginPage>{
         type(this.userName, userName);
         type(this.password, password);
         click(loginButton);
-        return new ProductsPage(driver);
+        return new ProductsPage().openPage(ProductsPage.class);
 
     }
 
@@ -48,12 +46,12 @@ public class LoginPage extends LoadableComponent<LoginPage>{
 
     @Override
     protected void load() {
-        Helpers.waitForElementVisibility(driver, By.id("login-button"));
+        openInitialPage(BASE_URL);
     }
 
     @Override
     protected void isLoaded() throws Error {
         //TODO: Assertion is not reached if element is not find on the page. So it is not clear (no error) that page is not loaded
-        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.id("login-button")), "Login page is not yet loaded.");
+//        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.id("login-button")), "Login page is not yet loaded.");
     }
 }

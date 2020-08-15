@@ -8,23 +8,33 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
+import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import java.util.List;
 
-public class ProductsPage extends LoadableComponent<ProductsPage> {
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+
+public class ProductsPage extends BaseObjectPage<ProductsPage> {
+
+    static final String ADD_TO_CART_selector = ".inventory_item:nth-child(%d) .btn_primary";
+    static final String REMOVE_selector = ".inventory_item:nth-child(%d) .btn_secondary";
 
     @FindBy(css = ".inventory_list")
     WebElement productList;
     @FindBy(css = ".inventory_item")
     List<WebElement> productItems;
+    @FindBy(css = ".shopping_cart_link")
+    WebElement shoppingCart;
+    @FindBy(css = ".shopping_cart_badge")
+    WebElement shoppingCartBadge;
+    @FindBy(id = "item_4_title_link")
+    WebElement firstProduct;
 
 
     WebDriver driver;
 
-    public ProductsPage(WebDriver driver) {
-        this.driver = driver;
-        this.get();
-        PageFactory.initElements(driver, this);
+    public ProductsPage() {
+        super(getDriver());
     }
 
     public boolean productsPageIsOpened() {
@@ -34,48 +44,47 @@ public class ProductsPage extends LoadableComponent<ProductsPage> {
 
     public ProductsPage addProductToCart(int numberOfProduct) {
 
-        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_primary", numberOfProduct))).click();
+        click(By.cssSelector(String.format(ADD_TO_CART_selector, numberOfProduct)));
         return this;
     }
 
     public ProductsPage removeProductFromCart(int numberOfProduct) {
 
-        driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary", numberOfProduct))).click();
+        click(By.cssSelector(String.format(REMOVE_selector, numberOfProduct)));
         return this;
     }
 
     public boolean isProductAddedToCart(int numberOfProduct) {
 
-        return driver.findElement(By.cssSelector(String.format(".inventory_item:nth-child(%d) .btn_secondary", numberOfProduct))).isDisplayed();
+        return isElementDisplayed(By.cssSelector(String.format(REMOVE_selector, numberOfProduct)));
     }
 
     public boolean isNumberOfAddedProductsVisible(int count) {
 
-        return driver.findElement(By.cssSelector(".shopping_cart_badge")).getText().equals(Integer.toString(count));
+        return getText(shoppingCartBadge).equals(Integer.toString(count));
 
     }
 
     public YourCartPage openCart() {
-        driver.findElement((By.cssSelector(".shopping_cart_link"))).click();
-        return new YourCartPage(driver);
+        click(shoppingCart);
+        return new YourCartPage(getDriver());
     }
 
-    public ProductPreviewPage openFirstProductPreview(){
-        driver.findElement(By.id("item_4_title_link")).click();
-        return new ProductPreviewPage(driver);
-        }
-
+    public ProductPreviewPage openFirstProductPreview() {
+        click(firstProduct);
+        return new ProductPreviewPage(getDriver());
+    }
 
     @Override
     protected void load() {
 
-        Helpers.waitForElementVisibility(driver, By.cssSelector(".inventory_list"));
     }
 
     @Override
     protected void isLoaded() throws Error {
 
-        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".inventory_list")), "Product page is not yet loaded.");
+        PageLoadHelper.isLoaded()
+                .isElementIsVisible(By.cssSelector(".inventory_list"));
 
     }
 }
