@@ -31,6 +31,7 @@ public class Helpers {
 
     }
 
+    //TODO: add logic for case when dir is not exist
     public static void deleteDir(String dir) throws IOException {
 
         Path path = Paths.get(dir);
