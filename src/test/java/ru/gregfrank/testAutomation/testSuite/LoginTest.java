@@ -21,7 +21,11 @@ public class LoginTest extends BaseTest {
     public void LoginToOnlineStoreWithLockedOrInvalidUser(String userName, String password, String errorMessage) {
 
         loginPage = new LoginPage();
-        Assert.assertEquals(loginPage.loginLockedUser(userName, password).getErrorMessageText(), errorMessage);
+        Assert.assertEquals(
+                loginPage
+                        .loginLockedUser(userName, password)
+                        .getErrorMessageText()
+                , errorMessage);
 
     }
 
