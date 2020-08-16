@@ -1,6 +1,7 @@
 package ru.gregfrank.testAutomation;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -14,7 +15,7 @@ public class SeleniumDriver {
 
 	public static WebDriver getDriver() {
 		if (driver == null) {
-			driver = new FirefoxDriver();
+			driver = new ChromeDriver();
 		}
 		return driver;
 	}
