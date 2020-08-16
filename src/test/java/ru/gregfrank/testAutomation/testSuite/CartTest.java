@@ -15,7 +15,7 @@ public class CartTest extends BaseTest {
     @BeforeMethod(dependsOnMethods = "openBrowser", alwaysRun = true)
     public void loginToSite() {
 
-        loginPage = new LoginPage(webDriver);
+        loginPage = new LoginPage();
         productsPage = loginPage.loginValidUser("standard_user", "secret_sauce");
 
     }
