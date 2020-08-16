@@ -21,6 +21,8 @@ public class LoginPage extends BaseObjectPage<LoginPage>{
 
     public LoginPage() {
         super(getDriver());
+        getDriver().get(BASE_URL);
+        getDriver().manage().window().maximize();
         this.openPage(LoginPage.class);
     }
 

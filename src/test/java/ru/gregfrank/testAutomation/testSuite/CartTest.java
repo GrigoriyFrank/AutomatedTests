@@ -12,7 +12,7 @@ public class CartTest extends BaseTest {
     LoginPage loginPage;
     ProductsPage productsPage;
 
-    @BeforeMethod(dependsOnMethods = "openBrowser", alwaysRun = true)
+    @BeforeMethod
     public void loginToSite() {
 
         loginPage = new LoginPage();

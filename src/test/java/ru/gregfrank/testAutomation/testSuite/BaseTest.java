@@ -29,27 +29,6 @@ public class BaseTest {
         }
     }
 
-    @Parameters({"browser", "url"})
-    @BeforeMethod
-    public void openBrowser(String browser, String url) {
-
-        if (browser.equalsIgnoreCase("chrome")) {
-//            webDriver = new ChromeDriver();
-            webDriver = new EventFiringWebDriver(new ChromeDriver());
-            webDriver.register(new WebDriverLogger());
-        } else if (browser.equalsIgnoreCase("firefox")) {
-//            webDriver = new FirefoxDriver();
-            webDriver = new EventFiringWebDriver(new FirefoxDriver());
-            webDriver.register(new WebDriverLogger());
-        } else {
-            throw new IllegalArgumentException("Check 'browser' argument! It must be either 'chrome' or 'firefox'");
-        }
-
-        webDriver.manage().window().maximize();
-        webDriver.get(url);
-
-    }
-
     @AfterMethod
     public void tearDown() {
 
@@ -59,7 +38,4 @@ public class BaseTest {
 
     }
 
-    public WebDriver getWebDriver() {
-        return webDriver;
-    }
 }
