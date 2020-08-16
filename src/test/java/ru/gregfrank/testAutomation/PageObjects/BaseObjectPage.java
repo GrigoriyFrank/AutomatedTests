@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import ru.gregfrank.testAutomation.CustomLoadableComponent;
 
+import java.util.List;
+
 import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 import static java.sql.DriverManager.getDriver;
 
@@ -50,7 +52,13 @@ public abstract class BaseObjectPage<T extends CustomLoadableComponent<T>> exten
         element.click();
     }
 
-    public String getText(WebElement element) {return element.getText();}
+    public String getText(WebElement element) {
+        return element.getText();
+    }
+
+    public String getText(By locator) {
+        return find(locator).getText();
+    }
 
     public boolean isElementDisplayed(WebElement element) {
         try {

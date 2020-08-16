@@ -67,7 +67,7 @@ public class ProductsPage extends BaseObjectPage<ProductsPage> {
 
     public YourCartPage openCart() {
         click(shoppingCart);
-        return new YourCartPage(getDriver());
+        return new YourCartPage().openPage(YourCartPage.class);
     }
 
     public ProductPreviewPage openFirstProductPreview() {

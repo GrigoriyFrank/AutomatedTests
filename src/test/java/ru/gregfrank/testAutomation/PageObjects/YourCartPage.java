@@ -2,53 +2,64 @@ package ru.gregfrank.testAutomation.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
+import ru.gregfrank.testAutomation.PageLoadHelper;
+
+import java.util.List;
+
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class YourCartPage extends BaseObjectPage<YourCartPage> {
 
-    WebDriver driver;
+    static final String PRODUCT_NAME_selector = ".cart_item:nth-child(%d) .inventory_item_name";
+    static final String REMOVE_selector = ".cart_item:nth-child(%d) .cart_button";
 
-    public YourCartPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        this.get();
+    @FindBy(css = ".cart_item")
+    List<WebElement> products;
+    @FindBy(css = ".checkout_button")
+    WebElement checkoutButton;
+
+    public YourCartPage() {
+        super(getDriver());
     }
 
-    public boolean checkNumberOfItemsInYourCartList(int number){
+    public boolean checkNumberOfItemsInYourCartList(int number) {
 
-        return driver.findElements(By.cssSelector(".cart_item")).size() == number;
+        return products.size() == number;
     }
 
-    public YourCartPage removeProduct(int numberOfProduct){
+    public YourCartPage removeProduct(int numberOfProduct) {
 
-        driver.findElement(By.cssSelector(String.format(".cart_item:nth-child(%d) .cart_button", numberOfProduct))).click();
+        click(By.cssSelector(String.format(REMOVE_selector, numberOfProduct)));
         return this;
     }
 
-    public CheckoutYourInformationPage checkout(){
+    public CheckoutYourInformationPage checkout() {
 
-        driver.findElement(By.cssSelector(".checkout_button")).click();
+        click(checkoutButton);
         return new CheckoutYourInformationPage(driver);
     }
 
-    public String getNameOfProduct(int numberOfProduct){
+    public String getNameOfProduct(int numberOfProduct) {
 
-        return driver.findElement(By.cssSelector(String.format(".cart_item:nth-child(%d) .inventory_item_name", numberOfProduct))).getText();
+        return getText(By.cssSelector(String.format(PRODUCT_NAME_selector, numberOfProduct)));
     }
 
     @Override
     protected void load() {
-
-        Helpers.waitForElementVisibility(driver, By.cssSelector(".checkout_button"));
 
     }
 
     @Override
     protected void isLoaded() throws Error {
 
-        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".checkout_button")), "Your Cart page is not yet loaded.");
+        PageLoadHelper.isLoaded()
+                .isElementIsVisible(By.cssSelector(".checkout_button"))
+                .isElementIsClickable(By.cssSelector(".checkout_button"));
 
     }
 }
