@@ -13,12 +13,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+
 @Listeners(TestListener.class)
 public class BaseTest {
 
     private static final String SCREENSHOT_DIR = System.getProperty("user.dir") + "\\testngOutput\\screenshots\\";
-    //    WebDriver webDriver;
-    EventFiringWebDriver webDriver;
 
     @BeforeSuite
     public void deleteScreenshots() {
@@ -32,8 +32,8 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
 
-        if (webDriver != null) {
-            webDriver.quit();
+        if (getDriver() != null) {
+            getDriver().quit();
         }
 
     }
