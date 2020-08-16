@@ -2,36 +2,43 @@ package ru.gregfrank.testAutomation.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
+import ru.gregfrank.testAutomation.PageLoadHelper;
 
-public class CheckoutOverviewPage extends LoadableComponent<CheckoutOverviewPage> {
+import java.util.List;
 
-    WebDriver driver;
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
-    public CheckoutOverviewPage(WebDriver driver) {
-        this.driver = driver;
-        this.get();
+public class CheckoutOverviewPage extends BaseObjectPage<CheckoutOverviewPage> {
+
+    @FindBy(css = ".cart_item")
+    List<WebElement> products;
+
+    public CheckoutOverviewPage() {
+      super(getDriver());
     }
 
 
     public boolean checkNumberOfProductsInOrder(int expectNumber){
 
-        return driver.findElements(By.cssSelector(".cart_item")).size() == expectNumber;
+        return products.size() == expectNumber;
     }
 
     @Override
     protected void load() {
-
-        Helpers.waitForElementVisibility(driver, By.cssSelector(".cart_button"));
 
     }
 
     @Override
     protected void isLoaded() throws Error {
 
-        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.cssSelector(".cart_button")), "Checkout: Overview page is not yet loaded.");
+        PageLoadHelper.isLoaded()
+                .isElementIsVisible(By.cssSelector(".cart_button"))
+                .isElementIsClickable(By.cssSelector(".cart_button"));
 
     }
 }

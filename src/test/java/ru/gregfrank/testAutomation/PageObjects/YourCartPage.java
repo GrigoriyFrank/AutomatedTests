@@ -41,7 +41,7 @@ public class YourCartPage extends BaseObjectPage<YourCartPage> {
     public CheckoutYourInformationPage checkout() {
 
         click(checkoutButton);
-        return new CheckoutYourInformationPage(driver);
+        return new CheckoutYourInformationPage().openPage(CheckoutYourInformationPage.class);
     }
 
     public String getNameOfProduct(int numberOfProduct) {
