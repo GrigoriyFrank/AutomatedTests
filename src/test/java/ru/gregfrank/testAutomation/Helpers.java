@@ -17,17 +17,18 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class Helpers {
 
-    //TODO: add logic for case when dir is not exist
     public static void deleteDir(String dir) throws IOException {
 
         Path path = Paths.get(dir);
 
         // read java doc, Files.walk need close the resources.
         // try-with-resources to ensure that the stream's open directories are closed
-        try (Stream<Path> walk = Files.walk(path)) {
-            walk
-                    .sorted(Comparator.reverseOrder())
-                    .forEach(Helpers::deleteDirectory);
+        if (Files.isDirectory(path)) {
+            try (Stream<Path> walk = Files.walk(path)) {
+                walk
+                        .sorted(Comparator.reverseOrder())
+                        .forEach(Helpers::deleteDirectory);
+            }
         }
 
     }
@@ -36,7 +37,7 @@ public class Helpers {
         try {
             Files.delete(path);
         } catch (IOException e) {
-            System.err.printf("Unable to delete this path : %s%n%s", path, e);
+            System.out.printf("Unable to delete this path : %s%n%s", path, e);
         }
     }
 }
