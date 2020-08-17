@@ -1,8 +1,10 @@
 package ru.gregfrank.testAutomation.PageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
@@ -55,7 +57,8 @@ public class LoginPage extends BaseObjectPage<LoginPage>{
 
     @Override
     protected void isLoaded() throws Error {
-        //TODO: Assertion is not reached if element is not find on the page. So it is not clear (no error) that page is not loaded
-//        Assert.assertTrue(Helpers.isWebElementDisplayed(driver, By.id("login-button")), "Login page is not yet loaded.");
+        PageLoadHelper.isLoaded()
+                .isElementIsVisible(By.id("login-button"))
+                .isElementIsClickable(By.id("login-button"));
     }
 }
