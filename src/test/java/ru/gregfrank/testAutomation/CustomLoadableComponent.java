@@ -9,7 +9,7 @@ import ru.gregfrank.testAutomation.PageObjects.BaseObjectPage;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 /**
  * Custom Loadable Component
@@ -39,13 +39,5 @@ public abstract class CustomLoadableComponent<T extends CustomLoadableComponent<
     protected abstract void load();
 
     protected abstract void isLoaded() throws Error;
-
-    protected void waitForPageToLoad(ExpectedCondition pageLoadCondition) {
-        Wait wait = new FluentWait(getDriver())
-                .withTimeout(Duration.ofSeconds(LOAD_TIMEOUT))
-                .pollingEvery(Duration.ofMillis(REFRESH_RATE));
-
-        wait.until(pageLoadCondition);
-    }
 
 }

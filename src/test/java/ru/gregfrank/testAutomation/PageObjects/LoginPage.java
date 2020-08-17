@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import ru.gregfrank.testAutomation.PageLoadHelper;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class LoginPage extends BaseObjectPage<LoginPage>{
     private static final String BASE_URL = "https://www.saucedemo.com";
@@ -22,8 +22,7 @@ public class LoginPage extends BaseObjectPage<LoginPage>{
     WebDriver driver;
 
     public LoginPage() {
-        super(getDriver());
-        this.openPage(LoginPage.class);
+        super();
     }
 
 
@@ -52,13 +51,14 @@ public class LoginPage extends BaseObjectPage<LoginPage>{
 
     @Override
     protected void load() {
-        openInitialPage(BASE_URL);
+
     }
 
     @Override
     protected void isLoaded() throws Error {
-        PageLoadHelper.isLoaded()
-                .isElementIsVisible(By.id("login-button"))
-                .isElementIsClickable(By.id("login-button"));
+        openInitialPage(BASE_URL);
+//        PageLoadHelper.isLoaded()
+//                .isElementIsVisible(By.id("login-button"))
+//                .isElementIsClickable(By.id("login-button"));
     }
 }

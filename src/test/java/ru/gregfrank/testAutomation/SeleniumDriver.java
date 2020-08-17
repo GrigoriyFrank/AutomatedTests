@@ -3,6 +3,11 @@ package ru.gregfrank.testAutomation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Selenium driver wrapper
@@ -11,13 +16,69 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class SeleniumDriver {
 
-	static WebDriver driver;
+//	static WebDriver driver;
+//
+//	public static WebDriver getDriver() {
+//		if (driver == null) {
+//			driver = new ChromeDriver();
+//		}
+//		return driver;
+//	}
 
-	public static WebDriver getDriver() {
-		if (driver == null) {
-			driver = new ChromeDriver();
+	public static SeleniumDriver get() {
+		return new SeleniumDriver();
+	}
+
+	public WebDriver driver;
+	private static String BROWSER = "chrome";
+	private static final String REMOTE = System.getProperty("selenium.remote", "false");
+	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
+
+	public WebDriver getDriver() {
+		if (driverThread.get() == null) {
+			switch (BROWSER) {
+				case "chrome":
+					if (Boolean.parseBoolean(REMOTE)) {
+						DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+						capabilities.setCapability("enableVNC", true);
+						driver = initRemoteDriver(capabilities);
+					} else {
+						driver = new ChromeDriver();
+					}
+					driverThread.set(driver);
+					break;
+
+				case "firefox":
+					if (Boolean.parseBoolean(REMOTE)) {
+						driver = initRemoteDriver(DesiredCapabilities.firefox());
+					} else {
+						driver = new FirefoxDriver();
+					}
+					driverThread.set(driver);
+					break;
+			}
 		}
-		return driver;
+		return driverThread.get();
+	}
+
+	public RemoteWebDriver initRemoteDriver(DesiredCapabilities capabilities) {
+		RemoteWebDriver remoteDriver = null;
+		try {
+			remoteDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+
+		return remoteDriver;
+	}
+
+	public void quitDriver(WebDriver driver) {
+		driver.quit();
+		driverThread.remove();
+	}
+
+	public static void setBrowser(String browser) {
+		SeleniumDriver.BROWSER = browser;
 	}
 
 }

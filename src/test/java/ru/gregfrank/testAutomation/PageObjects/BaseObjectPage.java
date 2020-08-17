@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import ru.gregfrank.testAutomation.CustomLoadableComponent;
+import ru.gregfrank.testAutomation.SeleniumDriver;
 
 import java.util.List;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
-import static java.sql.DriverManager.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 /**
  *
@@ -19,12 +19,12 @@ import static java.sql.DriverManager.getDriver;
 public abstract class BaseObjectPage<T extends CustomLoadableComponent<T>> extends CustomLoadableComponent<T> {
     private WebDriver driver;
 
-    public BaseObjectPage(WebDriver driver) {
-        this.driver = driver;
+    public BaseObjectPage() {
+        this.driver = SeleniumDriver.get().getDriver();
     }
 
     public T openPage(Class<T> clazz) {
-        T page = PageFactory.initElements(getDriver(), clazz);
+        T page = PageFactory.initElements(driver, clazz);
         return page.get();
     }
 

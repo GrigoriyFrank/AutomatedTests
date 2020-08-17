@@ -11,7 +11,7 @@ import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import java.util.List;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class YourCartPage extends BaseObjectPage<YourCartPage> {
 
@@ -24,7 +24,7 @@ public class YourCartPage extends BaseObjectPage<YourCartPage> {
     WebElement checkoutButton;
 
     public YourCartPage() {
-        super(getDriver());
+        super();
     }
 
     public boolean checkNumberOfItemsInYourCartList(int number) {

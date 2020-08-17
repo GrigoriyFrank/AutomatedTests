@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class PageLoadHelper {
 
@@ -18,7 +18,7 @@ public class PageLoadHelper {
 
     public PageLoadHelper isElementIsClickable(By by) {
         try {
-            new WebDriverWait(getDriver(), TIMEOUT).until(ExpectedConditions.elementToBeClickable(by));
+            new WebDriverWait(SeleniumDriver.get().getDriver(), TIMEOUT).until(ExpectedConditions.elementToBeClickable(by));
             return this;
         } catch (WebDriverException e) {
             throw new Error("Element is not clickable");
@@ -27,7 +27,7 @@ public class PageLoadHelper {
 
     public PageLoadHelper isElementIsVisible(By by) {
         try {
-            new WebDriverWait(getDriver(), TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(by));
+            new WebDriverWait(SeleniumDriver.get().getDriver(), TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(by));
             return this;
         } catch (WebDriverException e) {
             throw new Error("Element is not visible");

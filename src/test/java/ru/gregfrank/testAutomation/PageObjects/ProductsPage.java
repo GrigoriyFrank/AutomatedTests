@@ -12,7 +12,7 @@ import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import java.util.List;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class ProductsPage extends BaseObjectPage<ProductsPage> {
 
@@ -34,7 +34,7 @@ public class ProductsPage extends BaseObjectPage<ProductsPage> {
     WebDriver driver;
 
     public ProductsPage() {
-        super(getDriver());
+        super();
     }
 
     public boolean productsPageIsOpened() {

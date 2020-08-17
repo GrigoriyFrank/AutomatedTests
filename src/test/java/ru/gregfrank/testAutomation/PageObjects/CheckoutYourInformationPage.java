@@ -9,7 +9,7 @@ import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
 import ru.gregfrank.testAutomation.PageLoadHelper;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class CheckoutYourInformationPage extends BaseObjectPage<CheckoutYourInformationPage> {
 
@@ -23,7 +23,7 @@ public class CheckoutYourInformationPage extends BaseObjectPage<CheckoutYourInfo
     WebElement continueButton;
 
     public CheckoutYourInformationPage() {
-       super(getDriver());
+       super();
     }
 
     public CheckoutOverviewPage addPersonalInfo(){

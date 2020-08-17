@@ -11,7 +11,7 @@ import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import java.util.List;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class CheckoutOverviewPage extends BaseObjectPage<CheckoutOverviewPage> {
 
@@ -19,7 +19,7 @@ public class CheckoutOverviewPage extends BaseObjectPage<CheckoutOverviewPage> {
     List<WebElement> products;
 
     public CheckoutOverviewPage() {
-      super(getDriver());
+      super();
     }
 
 

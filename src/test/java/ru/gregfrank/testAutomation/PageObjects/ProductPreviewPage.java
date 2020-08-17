@@ -10,7 +10,7 @@ import org.testng.Assert;
 import ru.gregfrank.testAutomation.Helpers;
 import ru.gregfrank.testAutomation.PageLoadHelper;
 
-import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
+//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class ProductPreviewPage extends BaseObjectPage<ProductPreviewPage> {
 
@@ -20,7 +20,7 @@ public class ProductPreviewPage extends BaseObjectPage<ProductPreviewPage> {
     WebElement shoppingCart;
 
     public ProductPreviewPage() {
-        super(getDriver());
+        super();
     }
 
     public ProductPreviewPage addProductToCart() {

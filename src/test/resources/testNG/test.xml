@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testSuite" parallel="tests" thread-count="2" verbose="1" >
+<suite name="testSuite" parallel="tests" thread-count="6" verbose="1" >
     <parameter name="url"  value="https://www.saucedemo.com/"/>
     <test name="test_chrome">
         <parameter name="browser"  value="chrome"/>
@@ -9,10 +9,10 @@
 <!--            <class name="ru.gregfrank.testAutomation.testSuite.CartTest"/>-->
         </classes>
     </test>
-<!--    <test name="test_firefox">-->
-<!--        <parameter name="browser"  value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="test_firefox">
+        <parameter name="browser"  value="firefox"/>
+        <classes>
+            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>
+        </classes>
+    </test>
 </suite>
