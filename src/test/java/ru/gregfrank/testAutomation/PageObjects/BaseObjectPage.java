@@ -30,6 +30,7 @@ public abstract class BaseObjectPage<T extends CustomLoadableComponent<T>> exten
 
     public void openInitialPage(String url) {
         driver.get(url);
+        driver.manage().window().maximize();
     }
 
     public WebElement find(By locator) {
