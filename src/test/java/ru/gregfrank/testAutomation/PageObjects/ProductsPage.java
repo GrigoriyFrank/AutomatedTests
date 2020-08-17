@@ -72,7 +72,7 @@ public class ProductsPage extends BaseObjectPage<ProductsPage> {
 
     public ProductPreviewPage openFirstProductPreview() {
         click(firstProduct);
-        return new ProductPreviewPage(getDriver());
+        return new ProductPreviewPage().openPage(ProductPreviewPage.class);
     }
 
     @Override
