@@ -17,20 +17,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 
 public class Helpers {
 
-    private static final long WAIT = 5;
-
-    public static void waitForElementVisibility(WebDriver driver, By locator) {
-
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT).getSeconds());
-        wait.until(visibilityOfElementLocated(locator));
-    }
-
-    public static boolean isWebElementDisplayed(WebDriver driver, By locator) {
-
-        return driver.findElement(locator).isDisplayed();
-
-    }
-
     //TODO: add logic for case when dir is not exist
     public static void deleteDir(String dir) throws IOException {
 
