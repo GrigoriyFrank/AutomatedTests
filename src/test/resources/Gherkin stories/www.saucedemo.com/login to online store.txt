@@ -1,5 +1,6 @@
 Story: Login to online store
 
+//TODO: add cases for login with empty fields
 As a user
 In order to login to online store
 I want to check login to online store with valid, locked and invalid user
