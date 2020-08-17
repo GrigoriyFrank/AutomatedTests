@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class TestListener  extends TestListenerAdapter {
 
@@ -23,9 +24,8 @@ public class TestListener  extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult testResult) {
         super.onTestFailure(testResult);
-
-        Object currentClass = testResult.getInstance();
-        WebDriver webDriver = ((BaseTest) currentClass).getWebDriver();
+        
+        WebDriver webDriver = getDriver();
         if (webDriver != null) {
             File srcFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 
