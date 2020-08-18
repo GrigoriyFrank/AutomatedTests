@@ -1,19 +1,11 @@
 package ru.gregfrank.testAutomation;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Duration;
 import java.util.Comparator;
 import java.util.stream.Stream;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class Helpers {
 

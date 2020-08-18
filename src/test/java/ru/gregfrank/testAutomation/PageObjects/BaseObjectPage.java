@@ -8,10 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import ru.gregfrank.testAutomation.CustomLoadableComponent;
 import ru.gregfrank.testAutomation.SeleniumDriver;
 
-import java.util.List;
-
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
-
 /**
  *
  */

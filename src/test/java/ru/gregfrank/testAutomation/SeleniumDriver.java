@@ -16,15 +16,6 @@ import java.net.URL;
  */
 public class SeleniumDriver {
 
-//	static WebDriver driver;
-//
-//	public static WebDriver getDriver() {
-//		if (driver == null) {
-//			driver = new ChromeDriver();
-//		}
-//		return driver;
-//	}
-
 	public static SeleniumDriver get() {
 		return new SeleniumDriver();
 	}

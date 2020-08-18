@@ -1,24 +1,10 @@
 package ru.gregfrank.testAutomation;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import ru.gregfrank.testAutomation.PageObjects.BaseObjectPage;
-
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 /**
  * Custom Loadable Component
  */
 public abstract class CustomLoadableComponent<T extends CustomLoadableComponent<T>> {
-    private WebDriver driver;
-
-    private static final int LOAD_TIMEOUT = 30;
-    private static final long REFRESH_RATE = 1000;
 
     @SuppressWarnings("unchecked")
     public T get() {

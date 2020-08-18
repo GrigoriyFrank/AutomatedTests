@@ -1,12 +1,9 @@
 package ru.gregfrank.testAutomation.PageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.gregfrank.testAutomation.PageLoadHelper;
 
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class LoginPage extends BaseObjectPage<LoginPage>{
     private static final String BASE_URL = "https://www.saucedemo.com";
@@ -18,8 +15,6 @@ public class LoginPage extends BaseObjectPage<LoginPage>{
     WebElement loginButton;
     @FindBy(css = "h3[data-test=error]")
     WebElement errorMessage;
-
-    WebDriver driver;
 
     public LoginPage() {
         super();

@@ -3,20 +3,16 @@ package ru.gregfrank.testAutomation;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
-import ru.gregfrank.testAutomation.testSuite.BaseTest;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class TestListener  extends TestListenerAdapter {
 
@@ -25,7 +21,7 @@ public class TestListener  extends TestListenerAdapter {
     public void onTestFailure(ITestResult testResult) {
         super.onTestFailure(testResult);
         
-        WebDriver webDriver = SeleniumDriver.get().getDriver();;
+        WebDriver webDriver = SeleniumDriver.get().getDriver();
         if (webDriver != null) {
             File srcFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 

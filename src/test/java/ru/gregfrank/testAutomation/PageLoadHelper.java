@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
-
 public class PageLoadHelper {
 
     private static final int TIMEOUT = 10;

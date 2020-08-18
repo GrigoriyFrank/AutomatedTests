@@ -4,15 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.LoadableComponent;
-import org.testng.Assert;
-import ru.gregfrank.testAutomation.Helpers;
 import ru.gregfrank.testAutomation.PageLoadHelper;
 
 import java.util.List;
 
-//import static ru.gregfrank.testAutomation.SeleniumDriver.getDriver;
 
 public class ProductsPage extends BaseObjectPage<ProductsPage> {
 
@@ -29,9 +24,6 @@ public class ProductsPage extends BaseObjectPage<ProductsPage> {
     WebElement shoppingCartBadge;
     @FindBy(id = "item_4_title_link")
     WebElement firstProduct;
-
-
-    WebDriver driver;
 
     public ProductsPage() {
         super();
