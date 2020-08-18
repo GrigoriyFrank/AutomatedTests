@@ -1,9 +1,8 @@
 Story: Login to online store
 
-//TODO: add cases for login with empty fields
 As a user
 In order to login to online store
-I want to check login to online store with valid, locked and invalid user
+I want to check login to online store with valid, locked, invalid user and without credentials
 
 Scenario 1: Login to online store with valid user
 Given that www.saucedemo.com login page is opened
@@ -21,3 +20,15 @@ Given that www.saucedemo.com login page is opened
 When I login with invalid user
 Then I should stay on Login page
 And I should see message Epic sadface: Username and password do not match any user in this service on Login page
+
+Scenario 4: Login to online store without username
+Given that www.saucedemo.com login page is opened
+When I login without username
+Then I should stay on Login page
+And I should see message Epic sadface: Username is required
+
+Scenario 5: Login to online store without password
+Given that www.saucedemo.com login page is opened
+When I login without password
+Then I should stay on Login page
+And I should see message Epic sadface: Password is required
