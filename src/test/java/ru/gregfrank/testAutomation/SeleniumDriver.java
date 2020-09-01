@@ -22,7 +22,7 @@ public class SeleniumDriver {
 
 	public WebDriver driver;
 	private static String BROWSER = "chrome";
-	private static final String REMOTE = System.getProperty("selenium.remote", "false");
+	private static final String REMOTE = System.getProperty("selenium.remote", "true");
 	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
 	public WebDriver getDriver() {
@@ -32,6 +32,8 @@ public class SeleniumDriver {
 					if (Boolean.parseBoolean(REMOTE)) {
 						DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 						capabilities.setCapability("enableVNC", true);
+						capabilities.setCapability("enableLog", true);
+						capabilities.setCapability("enableVideo", true);
 						driver = initRemoteDriver(capabilities);
 					} else {
 						driver = new ChromeDriver();
@@ -55,7 +57,7 @@ public class SeleniumDriver {
 	public RemoteWebDriver initRemoteDriver(DesiredCapabilities capabilities) {
 		RemoteWebDriver remoteDriver = null;
 		try {
-			remoteDriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+			remoteDriver = new RemoteWebDriver(new URL("http://localhost:8080/wd/hub"), capabilities);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
