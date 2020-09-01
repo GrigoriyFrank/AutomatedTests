@@ -9,10 +9,10 @@
 <!--            <class name="ru.gregfrank.testAutomation.testSuite.CartTest"/>-->
         </classes>
     </test>
-    <test name="test_firefox">
-        <parameter name="browser"  value="firefox"/>
-        <classes>
-            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>
-        </classes>
-    </test>
+<!--    <test name="test_firefox">-->
+<!--        <parameter name="browser"  value="firefox"/>-->
+<!--        <classes>-->
+<!--            <class name="ru.gregfrank.testAutomation.testSuite.LoginTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
